@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="test-with-pageobjects"
+    errors="0" failures="1" hostname="" id="" package="test-with-pageobjects" skipped="1"
+    tests="1" time="7.899" timestamp="">
+  
+    <testcase name="e2e tests using page objects" classname="test-with-pageobjects" time="7.899" assertions="1">  <failure message="Timed out while waiting for element &lt;#app&gt; to be present for 5000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (5244ms)">    at Object.e2e tests using page objects (D:\CS\NSAOP\NSAOP-frontend\tests\e2e\specs\test-with-pageobjects.js:14:14)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+    
+    <testcase
+      name="verify if string &#34;e2e-nightwatch&#34; is within the cli plugin links" classname="test-with-pageobjects">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

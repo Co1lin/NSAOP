@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="test"
+    errors="0" failures="1" hostname="" id="" package="test" skipped="1"
+    tests="1" time="15.54" timestamp="">
+  
+    <testcase name="default e2e tests" classname="test" time="15.54" assertions="1">  <failure message="Timed out while waiting for element &lt;#app&gt; to be present for 5000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (13150ms)">    at Object.default e2e tests (D:\CS\NSAOP\NSAOP-frontend\tests\e2e\specs\test.js:8:8)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+    
+    <testcase
+      name="example e2e test using a custom command" classname="test">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

@@ -1,0 +1,101 @@
+variables:
+  REPO_NAME: gitlab.secoder.net/FatherOriented/NSAOP-backend
+
+# The problem is that to be able to use go get, one needs to put
+# the repository in the $GOPATH. So for example if your gitlab domain
+# is gitlab.com, and that your repository is namespace/project, and
+# the default GOPATH being /go, then you'd need to have your
+# repository in /go/src/gitlab.com/namespace/project
+# Thus, making a symbolic link corrects this.
+.before_go: &before_go
+  - mkdir -p $GOPATH/src/$(dirname $REPO_NAME)
+  - ln -svf $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
+  - cd $GOPATH/src/$REPO_NAME
+  - cp $CONFIG config/config.json
+  - go env -w GO111MODULE=on
+  - go env -w GOPROXY=https://goproxy.cn,direct
+  - go mod download
+
+stages:
+  - test
+  - deploy
+
+test:
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+  stage: test
+  image: golang:latest
+  before_script:
+    - *before_go
+  script:
+    - go get -u github.com/swaggo/swag/cmd/swag
+    - swag init
+    - go test -cover -race -v -coverprofile=coverage.out $(go list ./... | grep -v /vendor/)
+  after_script:
+    - SUFFIX=$RANDOM
+    - curl "http://10.0.0.11/sonar-scanner.tar.gz" -s -o "/tmp/sonar-$SUFFIX.tar.gz"
+    - tar -xf "/tmp/sonar-$SUFFIX.tar.gz" -C /opt
+    - /opt/sonar-scanner/bin/sonar-scanner
+  only:
+    - master
+
+dev-test:
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+  stage: test
+  image: golang:latest
+  before_script:
+    - *before_go
+  script:
+    - go get -u github.com/swaggo/swag/cmd/swag
+    - swag init
+    - go test -cover -race -v -coverprofile=coverage.out $(go list ./... | grep -v /vendor/)
+  after_script:
+    - SUFFIX=$RANDOM
+    - curl "http://10.0.0.11/sonar-scanner.tar.gz" -s -o "/tmp/sonar-$SUFFIX.tar.gz"
+    - tar -xf "/tmp/sonar-$SUFFIX.tar.gz" -C /opt
+    - /opt/sonar-scanner/bin/sonar-scanner
+  only:
+    - dev
+  allow_failure: true
+
+pretest:
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+  stage: test
+  image: golang:latest
+  before_script:
+    - *before_go
+  script:
+    - go get -u github.com/swaggo/swag/cmd/swag
+    - swag init
+    - go test -cover -race -v -coverprofile=coverage.out $(go list ./... | grep -v /vendor/)
+  except:
+    - dev
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - docker login --username=$aliyun_docker_username --password=$aliyun_docker_passwd registry-vpc.cn-beijing.aliyuncs.com
+    - docker build -t registry-vpc.cn-beijing.aliyuncs.com/usr/nsaop-backend .
+    - docker push registry-vpc.cn-beijing.aliyuncs.com/usr/nsaop-backend:latest
+    - curl https://my_server_1/nsaop/deploy_webhook.php
+    - curl https://my_server_2/nsaop/deploy_webhook.php
+  only:
+    - master
+  tags:
+    - shell
+
+deploy-dev:
+  stage: deploy
+  script:
+    - docker login --username=$aliyun_docker_username --password=$aliyun_docker_passwd registry-vpc.cn-beijing.aliyuncs.com
+    - docker build -t registry-vpc.cn-beijing.aliyuncs.com/usr/nsaop-backend-dev .
+    - docker push registry-vpc.cn-beijing.aliyuncs.com/usr/nsaop-backend-dev:latest
+    - curl https://my_server_1/nsaop/deploy_webhook_dev.php
+    - curl https://my_server_2/nsaop/deploy_webhook_dev.php
+  only:
+    - dev
+  tags:
+    - shell

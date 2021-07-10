@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="testLogin"
+    errors="0" failures="0" hostname="" id="" package="testLogin" skipped="0"
+    tests="2" time="6.409" timestamp="">
+  
+    <testcase name="default e2e tests" classname="testLogin" time="2.537" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="test login button with no input" classname="testLogin" time="3.872" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

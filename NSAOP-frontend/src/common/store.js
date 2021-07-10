@@ -1,0 +1,13 @@
+export const SET_TOKEN = "SET_TOKEN"
+export const SET_USERNAME = "SET_USERNAME"
+export const SET_COMPANY = "SET_COMPANY"
+export const SET_TEL = "SET_TEL"
+export const SET_EMAIL = "SET_EMAIL"
+export const SET_ROLE = "SET_ROLE"
+export const SET_ORDER_QUERY = "SET_ORDER_QUERY"
+export const SET_LOCATION_QUERY = "SET_LOCATION_QUERY"
+
+export const LOGIN = "login"
+export const LOGOUT = "logout"
+export const SET_TARGET = "setTarget"
+export const SET_LOCATION_TARGET = "setLocationTarget"

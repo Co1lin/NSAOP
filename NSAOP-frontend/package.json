@@ -1,0 +1,135 @@
+{
+  "name": "nsaop-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode development",
+    "build": "vue-cli-service build --mode production",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit:c": "npm run test:unit -- --coverage",
+    "test": "npm run test:unit && npm run test:e2e",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "echarts": "^5.1.1",
+    "element-ui": "^2.15.1",
+    "flush-promises": "^1.0.2",
+    "js-cookie": "^2.2.1",
+    "js-md5": "^0.7.3",
+    "qs": "^6.10.1",
+    "vue": "^2.6.11",
+    "vue-recaptcha-v3": "^1.9.0",
+    "vue-router": "^3.5.1",
+    "vue-window-size": "^1.1.1",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-nightwatch": "^4.5.12",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.12",
+    "@vue/cli-service": "^4.5.13",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "chromedriver": "89",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "filemanager-webpack-plugin": "^4.0.0",
+    "image-webpack-loader": "^7.0.1",
+    "jest-mock-axios": "^4.3.0",
+    "less-loader": "^5.0.0",
+    "lodash": "^4.17.21",
+    "maptalks": "^0.49.1",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.1",
+    "vab-icon": "0.0.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpackbar": "^4.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/strongly-recommended",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/max-attributes-per-line": [
+        "error",
+        {
+          "singleline": 3,
+          "multiline": {
+            "max": 1,
+            "allowFirstLine": false
+          }
+        }
+      ],
+      "vue/attributes-order": "warn",
+      "vue/no-confusing-v-for-v-if": "error",
+      "vue/no-v-html": "error",
+      "vue/order-in-components": "warn",
+      "vue/this-in-template": "error",
+      "vue/component-tags-order": [
+        "error",
+        {
+          "order": [
+            [
+              "script",
+              "template"
+            ],
+            "style"
+          ]
+        }
+      ],
+      "vue/eqeqeq": "warn",
+      "vue/max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
+      "vue/no-deprecated-scope-attribute": "error",
+      "vue/no-deprecated-slot-attribute": "error",
+      "vue/no-deprecated-slot-scope-attribute": "error",
+      "vue/no-irregular-whitespace": "error",
+      "vue/no-restricted-syntax": "error",
+      "vue/no-static-inline-styles": "error",
+      "vue/no-unsupported-features": "error",
+      "vue/script-indent": "error",
+      "vue/v-slot-style": "error",
+      "vue/valid-v-bind-sync": "error",
+      "vue/valid-v-slot": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

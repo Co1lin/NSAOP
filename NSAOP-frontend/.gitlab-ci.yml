@@ -1,0 +1,54 @@
+variables:
+  # Please edit to your GitLab project
+  REPO_NAME: gitlab.secoder.net/FatherOriented/NSAOP-frontend
+
+stages:
+  - test
+  - deploy
+
+# Job template for test stage
+.test:
+  image: node:lts
+  stage: test
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+  before_script:
+    - npm install cnpm -g --registry=https://registry.npm.taobao.org
+    - cnpm install
+
+
+unit-test:
+  extends: .test
+  script:
+    - cnpm run test:unit
+  after_script:
+    - rm -rf node_modules
+    - SUFFIX=$RANDOM
+    - curl "http://10.0.0.11/sonar-scanner.tar.gz" -s -o "/tmp/sonar-$SUFFIX.tar.gz"
+    - tar -xf "/tmp/sonar-$SUFFIX.tar.gz"  -C /opt
+    - /opt/sonar-scanner/bin/sonar-scanner
+
+  allow_failure: true
+
+style-test:
+  extends: .test
+  allow_failure: true
+  script:
+    - cnpm run lint
+
+deploy:
+  stage: deploy
+
+  script:
+    - docker login --username=$aliyun_docker_username --password=$aliyun_docker_passwd registry-vpc.cn-beijing.aliyuncs.com
+    - docker build -t registry-vpc.cn-beijing.aliyuncs.com/co1lin/nsaop-frontend .
+    - docker push registry-vpc.cn-beijing.aliyuncs.com/co1lin/nsaop-frontend:latest
+    - curl https://my_server_1/nsaop/deploy_webhook.php
+    - curl https://my_server_1/nsaop/deploy_webhook.php
+  only:
+    - master
+  tags:
+    - shell

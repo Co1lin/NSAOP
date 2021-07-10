@@ -1,0 +1,11 @@
+.idea
+.vscode
+
+node_modules
+docs
+config/config.json
+nsaop
+
+coverage.out
+package-lock.json
+package.json
