@@ -8,9 +8,11 @@ Project for software engineering course, 2021 Spring in THU. Provided by Huawei.
 
 [Colin](https://github.com/Co1lin), [William](https://github.com/131441373), [Roger](https://github.com/livingshade), [ThonyPan](https://github.com/ThonyPan)
 
+(Commit record are deleted.)
+
 ## Architecture
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_516b8f3ebbeaae1c3cbd1ff9b5ef1091.png)
+![architecture](README.assets/architecture.png)
 
 Backend: **Go** ([Colin](https://github.com/Co1lin) & [William](https://github.com/131441373))
 
