@@ -8,7 +8,7 @@ Project for software engineering course, 2021 Spring in THU. Provided by Huawei.
 
 [Colin](https://github.com/Co1lin), [William](https://github.com/131441373), [Roger](https://github.com/livingshade), [ThonyPan](https://github.com/ThonyPan)
 
-(Commit record are deleted.)
+(Commit records are deleted.)
 
 ## Architecture
 
