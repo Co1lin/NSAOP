@@ -1,0 +1,47 @@
+{
+    "domain": "nsaop.enjoycolin.top",
+    "database": {
+        "user": "nsaop",
+        "pwd": "password",
+        "ip": "10.10.10.10",
+        "port": "8066",
+        "db": "nsaop"
+    },
+    "router": {
+        "port": ":10080",
+        "version": "v2",
+        "jwt": {
+            "accessTime": 300,
+            "refreshTime": 7200,
+            "clearFreq": "6h0m0s"
+        }
+    },
+    "site" : {
+        "access_secret": "secret",
+        "refresh_secret": "secret",
+        "admin_register_code": "code"
+    },
+    "email": {
+        "server": "smtp.office365.com:587",
+        "sender": "service@mail.nsaop.enjoycolin.top",
+        "password": "password",
+        "sender_name": "NSAOP Service Department",
+        "send_cron": "0 0 0 1 * *"
+    },
+    "recaptcha": {
+        "enable": true,
+        "reCAPTCHA_secret": "secret",
+        "min_reCAPTCHA_score": 0.6,
+        "timeout": 5000
+    },
+    "NCE": {
+        "host": "https://139.9.213.72:xxxx",
+        "timeout": 5000,
+        "username": "usr@tenant.com",
+        "password": "password",
+        "test_site": {
+            "name": "siteForTest",
+            "id": "f4a1ec0c-e18f-4977-b534-20dd782aee7a"
+        }
+    }
+}

@@ -3,7 +3,7 @@
 
 node_modules
 docs
-config/config.json
+#config/config.json
 nsaop
 
 coverage.out
