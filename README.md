@@ -1,6 +1,6 @@
 # NSAOP
 
-Network Services Access and Operation Project
+Network Services Access and Operation Platform
 
 Project for software engineering course, 2021 Spring in THU. Provided by Huawei.
 
